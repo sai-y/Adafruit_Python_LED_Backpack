@@ -44,7 +44,7 @@ class HT16K33(object):
         if i2c is None:
             import Adafruit_GPIO.I2C as I2C
             i2c = I2C
-        self._device = i2c.get_i2c_device(busnum=busnum, address, **kwargs)
+        self._device = i2c.get_i2c_device(busnum=busnum, address=address, **kwargs)
         self.buffer = bytearray([0]*16)
 
     def begin(self):

@@ -37,14 +37,14 @@ HT16K33_CMD_BRIGHTNESS      = 0xE0
 class HT16K33(object):
     """Driver for interfacing with a Holtek HT16K33 16x8 LED driver."""
 
-    def __init__(self, address=DEFAULT_ADDRESS, i2c=None, **kwargs):
+    def __init__(self, address=DEFAULT_ADDRESS, busnum=1, i2c=None, **kwargs):
         """Create an HT16K33 driver for devie on the specified I2C address
         (defaults to 0x70) and I2C bus (defaults to platform specific bus).
         """
         if i2c is None:
             import Adafruit_GPIO.I2C as I2C
             i2c = I2C
-        self._device = i2c.get_i2c_device(address, **kwargs)
+        self._device = i2c.get_i2c_device(busnum=busnum, address, **kwargs)
         self.buffer = bytearray([0]*16)
 
     def begin(self):
